@@ -1319,8 +1319,15 @@
   -->
     <div class="field">
       <label for="mensaje">Mensaje <span class="required">*</span></label>
-      <textarea id="mensaje" name="mensaje" autocomplete="off"
-        placeholder="Describe brevemente la obra, medidas aproximadas o plazos." required></textarea>
+      <textarea 
+        id="mensaje" 
+        name="mensaje" 
+        autocomplete="off" 
+        maxlength="500" 
+        placeholder="Describe brevemente la obra, medidas aproximadas o plazos." 
+        required
+      ></textarea>
+        
     </div>
 
     <!-- 
@@ -1458,6 +1465,21 @@
             this.checked
               ? ""
               : "Acepte la Política de Privacidad para continuar.",
+          );
+        });
+      }
+
+      // ==========================================
+      // ВАЛИДАЦИЯ ПОЛЯ MENSAJE (pattern не работает у textarea)
+      // ==========================================
+      const mensajeField = document.getElementById("mensaje");
+      if (mensajeField) {
+        const forbiddenChars = /[<>{}`;$]/;
+        mensajeField.addEventListener("input", function () {
+          this.setCustomValidity(
+            forbiddenChars.test(this.value)
+              ? "No se permiten los caracteres < > { } ` ; $ en este campo."
+              : ""
           );
         });
       }
