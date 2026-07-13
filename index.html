@@ -338,17 +338,20 @@
     }
 
     .hero-stats {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-items: stretch;
     }
 
     .stat-card {
       background: var(--white);
       border-radius: var(--radius-sm);
-      padding: 16px 20px;
+      padding: 16px 16px;
       box-shadow: 0 6px 18px rgba(15, 42, 74, 0.06);
-      min-width: 128px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .stat-card .num {
@@ -357,6 +360,11 @@
       font-size: 1.35rem;
       color: var(--navy);
       display: block;
+    }
+
+    .stat-card .num.num-small {
+      font-size: 1.1rem;
+      line-height: 1.3;
     }
 
     .stat-card .label {
@@ -809,13 +817,11 @@
       }
 
       .hero-stats {
-        justify-content: space-between;
+        gap: 8px;
       }
 
       .stat-card {
-        flex: 1;
-        min-width: 0;
-        padding: 14px;
+        padding: 12px 10px;
       }
 
       .services,
@@ -945,7 +951,7 @@
             <span class="label">respuesta estimada</span>
           </div>
           <div class="stat-card">
-            <span class="num">Calidad</span>
+            <span class="num num-small">Compromiso de calidad</span>
             <span class="label">en cada detalle</span>
           </div>
         </div>
